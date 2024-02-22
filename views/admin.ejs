@@ -1,0 +1,60 @@
+<%- include('header') %>
+
+<div class="admin-container">
+    <h1 class="admin-title">Admin Dashboard</h1>
+
+    <% if (typeof errorMessage !== 'undefined') { %>
+        <p class="error-message"><%= errorMessage %></p>
+    <% } %>
+
+    <% if (typeof successMessage !== 'undefined') { %>
+        <p class="success-message"><%= successMessage %></p>
+    <% } %>
+
+    <table class="user-table">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Is Admin</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% users.forEach(user => { %>
+            <tr>
+                <td><%= user.username %></td>
+                <td><%= user.isAdmin ? 'Yes' : 'No' %></td>
+                <td>
+                    <form action="/admin/update/<%= user._id %>" method="POST" class="update-form">
+                        <label for="newUsername-<%= user._id %>">New Username:</label>
+                        <input type="text" id="newUsername-<%= user._id %>" name="newUsername" value="<%= user.username %>" required>
+                        <label for="password-<%= user._id %>">New Password:</label>
+                        <input type="password" id="password-<%= user._id %>" name="password">
+                        <label for="isAdmin-<%= user._id %>">Is Admin:</label>
+                        <input type="checkbox" id="isAdmin-<%= user._id %>" name="isAdmin" <% if (user.isAdmin) { %>checked<% } %>>
+                        <button class="type2_button update-button" type="submit">Update</button>
+                    </form>
+                    <form action="/admin/delete/<%= user._id %>" method="POST" class="delete-form">
+                        <button class="type2_button delete-button" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        <% }) %>
+        </tbody>
+    </table>
+
+    <h2>Create New User</h2>
+    <form action="/admin/create" method="POST" class="create-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+        <label for="password">Password:</label>
+        <input type="password" class="password" name="password" required><br>
+        <label for="password2">Confirm Password:</label>
+        <input type="password" class="password" name="password2" required><br>
+        <label for="isAdminCreate">Is Admin:</label>
+        <input type="checkbox" id="isAdminCreate" name="isAdmin"><br>
+        <button class="type2_button create-button" type="submit">Create User</button>
+    </form>
+</div>
+
+<%- include('footer') %>

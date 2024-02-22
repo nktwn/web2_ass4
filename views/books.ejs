@@ -1,0 +1,28 @@
+<%- include('header') %>
+
+<div class="book-container">
+    <h1>Book Search</h1>
+    <form action="/books" method="post" class="book-form">
+        <input type="text" name="query" placeholder="Enter book title or author" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <% if (books) { %>
+        <div class="book-list">
+            <% books.forEach(book => { %>
+                <div class="book">
+                    <div class="book-cover">
+                        <img src="<%= book.coverImage %>" alt="Book cover">
+                        <div class="book-info">
+                            <h2 class="book-title"><%= book.title %></h2>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    <% } else if (typeof errorMessage !== 'undefined') { %>
+        <p class="error-message"><%= errorMessage %></p>
+    <% } %>
+</div>
+
+<%- include('footer') %>

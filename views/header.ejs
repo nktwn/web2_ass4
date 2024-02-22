@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Mega Ultra Web-site</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <div class="logo">
+                    <img src="/logo.png" alt="Logo">
+                </div>
+                <% if (loggedIn) { %>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/weather">Weather</a></li>
+                    <li><a href="/books">Books</a></li>
+                    <% if (admin) { %>
+                        <li><a href="/admin">Admin</a></li>
+                    <% } %>
+                    <li><a href="/logout">Logout</a></li>
+
+                <% } %>
+
+
+
+                <% if (!loggedIn) { %>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                <% } %>
+            </ul>
+        </nav>
+    </header>
