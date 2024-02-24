@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
-
+const animeRoutes = require('./routes/anime');
+const mangaRoutes = require('./routes/manga');
 const { verifyToken, redirectToHomeIfLoggedIn, ifAdmin } = require('./utils/auth'); 
 
 const app = express();
@@ -49,8 +50,8 @@ app.use('/login', redirectToHomeIfLoggedIn, require('./routes/login'));
 app.use('/register', redirectToHomeIfLoggedIn, require('./routes/register'));
 app.use('/', verifyToken, require('./routes/index'));
 app.use('/logout', verifyToken, require('./routes/logout'));
-app.use('/weather', require('./routes/weather'));
-app.use('/books', require('./routes/books'));
+app.use('/anime', animeRoutes);
+app.use('/manga', mangaRoutes);
 app.use('/profile', verifyToken, require('./routes/profile'));
 app.use('/admin', verifyToken, ifAdmin, require('./routes/admin'));
 

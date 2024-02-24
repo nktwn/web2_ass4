@@ -1,0 +1,27 @@
+<%- include('header') %>
+
+<div class="manga-container">
+    <h1>Manga Search</h1>
+    <form action="/manga" method="post">
+        <input type="text" name="query" placeholder="Enter manga title" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <% if (mangas) { %>
+        <div class="manga-list">
+            <% mangas.forEach(manga => { %>
+                <div class="manga-card">
+                    <img src="<%= manga.images.jpg.image_url %>" alt="Manga cover">
+                    <div class="manga-card-content">
+                        <h2 class="manga-card-title"><%= manga.title %></h2>
+                        <p class="manga-card-description"><%= manga.synopsis %></p>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    <% } else if (typeof errorMessage !== 'undefined') { %>
+        <p class="error-message"><%= errorMessage %></p>
+    <% } %>
+</div>
+
+<%- include('footer') %>

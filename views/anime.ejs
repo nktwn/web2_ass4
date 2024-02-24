@@ -1,0 +1,27 @@
+<%- include('header') %>
+
+<div class="anime-container">
+    <h1>Anime Search</h1>
+    <form action="/anime" method="post">
+        <input type="text" name="query" placeholder="Enter anime title" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <% if (animes) { %>
+        <div class="anime-list">
+            <% animes.forEach(anime => { %>
+                <div class="anime-card">
+                    <img src="<%= anime.images.jpg.image_url %>" alt="Anime cover"> <!-- Обратите внимание на путь к URL обложки -->
+                    <div class="anime-card-container">
+                        <h2 class="anime-card-title"><%= anime.title %></h2>
+                        <p class="anime-card-description"><%= anime.synopsis %></p>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    <% } else if (typeof errorMessage !== 'undefined') { %>
+        <p class="error-message"><%= errorMessage %></p>
+    <% } %>
+</div>
+
+<%- include('footer') %>
