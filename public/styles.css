@@ -60,7 +60,7 @@ footer {
 }
 
 .logo img {
-    width: 60px;
+    width: 100px;
     border-radius: 50%;
 }
 
@@ -334,4 +334,218 @@ button[type="submit"]:hover {
     height: 100px;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.center {
+    text-align: center;
+}
+
+#topAnimeCarousel {
+    max-width: 800px;
+    margin: 30px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-inner {
+    position: relative;
+}
+
+.anime-item-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.anime-cover {
+    width: 40%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.anime-info {
+    width: 55%;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.anime-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.anime-description {
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .anime-item-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .anime-cover, .anime-info {
+        width: 100%;
+    }
+
+    .anime-info {
+        padding-left: 0;
+        padding-top: 20px;
+    }
+}
+/* Стили для карусели и её элементов */
+#topAnimeCarousel {
+    position: relative;
+    max-width: 800px;
+    margin: 30px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Стили для кнопок управления каруселью */
+.carousel-control-prev, .carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+}
+
+.carousel-control-prev {
+    left: -30px;
+}
+
+.carousel-control-next {
+    right: -30px;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    display: inline-block;
+    width: 30px; /* Размер иконки */
+    height: 30px; /* Размер иконки */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Пример использования стандартных иконок Bootstrap (можно заменить на свои) */
+.carousel-control-prev-icon {
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23000" viewBox="0 0 8 8"%3E%3Cpath d="M4.5 0L3 1.5 5.5 4 3 6.5 4.5 8 8 4.5z"/%3E%3Cpath d="M0 0v8h2V0H0z"/%3E%3C/svg%3E');
+}
+
+.carousel-control-next-icon {
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23000" viewBox="0 0 8 8"%3E%3Cpath d="M4.5 8L6 6.5 3.5 4 6 1.5 4.5 0 0 3.5z"/%3E%3Cpath d="M8 0v8H6V0h2z"/%3E%3C/svg%3E');
+}
+
+/* Для адаптивности на меньших экранах */
+@media (max-width: 768px) {
+    .carousel-control-prev, .carousel-control-next {
+        width: 15%;
+        left: -15px;
+        right: -15px;
+    }
+}
+.topCarousel {
+    position: relative;
+    max-width: 800px;
+    margin: 30px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Стили для кнопок управления каруселью */
+.topCarousel .carousel-control-prev,
+.topCarousel .carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+}
+
+.topCarousel .carousel-control-prev {
+    left: -30px;
+}
+
+.topCarousel .carousel-control-next {
+    right: -30px;
+}
+
+.topCarousel .carousel-control-prev-icon,
+.topCarousel .carousel-control-next-icon {
+    /* ... стили иконок ... */
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    .topCarousel .carousel-control-prev,
+    .topCarousel .carousel-control-next {
+        /* ... стили ... */
+    }
+}
+.topCarousel .carousel-item .media {
+    display: flex;
+    align-items: center;
+}
+
+
+
+.topCarousel .carousel-item .media-body {
+    flex-grow: 1;
+    padding-left: 20px; /* Расстояние между обложкой и текстом */
+}
+
+.topCarousel .carousel-item .title {
+    font-size: 24px; /* Или размер в зависимости от вашего дизайна */
+    margin-bottom: 10px;
+}
+
+.topCarousel .carousel-item .description {
+    font-size: 14px; /* Или размер в зависимости от вашего дизайна */
+}
+
+/* ... Остальные стили ... */
+.topCarousel .carousel-item .item-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.topCarousel .carousel-item .cover {
+    width: 3900px; /* Устанавливаем ширину */
+    height: auto; /* Высота будет автоматически рассчитана, чтобы сохранить пропорции */
+    object-fit: cover; /* Это свойство гарантирует, что изображение будет покрывать элемент без искажения пропорций */
+    border-radius: 10px; /* Добавляет закругленные углы, если нужно */
+    margin-right: 20px; /* Отступ справа от обложки до текста */
+}
+
+
+.topCarousel .carousel-item .info {
+    flex-grow: 1;
+    padding: 0 20px;
+    text-align: left;
+}
+
+.topCarousel .carousel-item .title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.topCarousel .carousel-item .description {
+    font-size: 14px;
+}
+
+/* Адаптивные стили и стили контролов */
+@media (max-width: 768px) {
+    .topCarousel .carousel-item .item-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .topCarousel .carousel-item .cover,
+    .topCarousel .carousel-item .info {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .topCarousel .carousel-item .info {
+        padding: 0;
+    }
 }

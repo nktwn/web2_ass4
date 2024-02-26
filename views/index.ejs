@@ -1,11 +1,61 @@
 <%- include('header') %>
+
+<!-- Карусель Top Anime -->
 <div class="center">
-    <div class="index-container">
-        <h1>Welcome to My Site!</h1>
-        <img src="/anime.gif" alt="Anime GIF" class="center-gif">
-        <div class="site-info">
-            <p>This is a cool site for various purposes. Here you can check weather, manage users and more!</p>
+    <h2>Top Anime Right Now</h2>
+    <div id="topAnimeCarousel" class="carousel slide topCarousel" data-ride="carousel">
+        <div class="carousel-inner">
+            <% topAnimes.forEach((anime, index) => { %>
+                <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                    <div class="anime-item-container">
+                        <img class="anime-cover" src="<%= anime.images.jpg.image_url %>" alt="<%= anime.title %>">
+                        <div class="anime-info">
+                            <h3 class="anime-title"><%= anime.title %></h3>
+                            <p class="anime-description"><%= anime.synopsis %></p>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
         </div>
+        <a class="carousel-control-prev" href="#topAnimeCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#topAnimeCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
+
+
+
+    <!-- Раздел Top Manga -->
+    <!-- Карусель Манги -->
+    <h2>Top Manga Right Now</h2>
+    <div id="topMangaCarousel" class="carousel slide topCarousel" data-ride="carousel">
+        <div class="carousel-inner">
+            <% topMangas.forEach((manga, index) => { %>
+                <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                    <div class="item-container">
+                        <img class="cover" src="<%= manga.images.jpg.image_url %>" alt="<%= manga.title %>">
+                        <div class="info">
+                            <h3 class="title"><%= manga.title %></h3>
+                            <p class="description"><%= manga.synopsis %></p>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+        <a class="carousel-control-prev" href="#topMangaCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#topMangaCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+
 </div>
 <%- include('footer') %>

@@ -9,13 +9,11 @@ router.get('/', (req, res) => {
 
 router.post('/', async (req, res) => {
     const query = req.body.query;
-    // Обновите URL для соответствия новому эндпойнту API Jikan v4
     const url = `https://api.jikan.moe/v4/anime?q=${encodeURIComponent(query)}`;
 
     try {
         const response = await axios.get(url);
-        // Обновите структуру ответа в соответствии с новым форматом API
-        const animes = response.data.data; // Обратите внимание на изменение доступа к данным
+        const animes = response.data.data;
         res.render('anime', { animes });
     } catch (error) {
         console.error(error);
