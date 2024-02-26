@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 const { validateRegistration } = require('../utils/validation');
+const Banner = require('../models/banner');
 const jwt = require('jsonwebtoken');
 
 router.get('/', async (req, res) => {
@@ -71,6 +72,21 @@ router.post('/update/:id', async (req, res) => {
     } catch (error) {
         console.error(error);
         return res.status(500).json({ errorMessage: 'Error updating user' });
+    }
+});
+router.post('/create-banner', async (req, res) => {
+    try {
+        const { title, type, items } = req.body;
+        const itemIDs = items.split(',').map(id => id.trim()); // Удаляем пробелы вокруг ID
+
+
+        const banner = new Banner({ title, type, items: itemIDs });
+        await banner.save();
+
+        res.redirect('/admin'); // Перенаправьте админа обратно на страницу админа
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error creating banner');
     }
 });
 

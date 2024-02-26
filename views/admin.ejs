@@ -55,6 +55,22 @@
         <input type="checkbox" id="isAdminCreate" name="isAdmin"><br>
         <button class="type2_button create-button" type="submit">Create User</button>
     </form>
+    <form action="/admin/create-banner" method="post">
+        <label for="title">Banner Title:</label>
+        <input type="text" id="title" name="title" required><br>
+
+        <label for="type">Select Type:</label>
+        <select id="type" name="type">
+            <option value="anime">Anime</option>
+            <option value="manga">Manga</option>
+        </select><br>
+
+        <label for="items">Item IDs (comma separated):</label>
+        <input type="text" id="items" name="items" required><br>
+
+        <button type="submit">Create Banner</button>
+    </form>
+
 </div>
 
 <%- include('footer') %>
