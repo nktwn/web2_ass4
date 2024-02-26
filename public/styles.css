@@ -393,7 +393,7 @@ button[type="submit"]:hover {
         padding-top: 20px;
     }
 }
-/* Стили для карусели и её элементов */
+
 #topAnimeCarousel {
     position: relative;
     max-width: 800px;
@@ -401,7 +401,6 @@ button[type="submit"]:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Стили для кнопок управления каруселью */
 .carousel-control-prev, .carousel-control-next {
     position: absolute;
     top: 50%;
@@ -419,14 +418,13 @@ button[type="submit"]:hover {
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
     display: inline-block;
-    width: 30px; /* Размер иконки */
-    height: 30px; /* Размер иконки */
+    width: 30px;
+    height: 30px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-/* Пример использования стандартных иконок Bootstrap (можно заменить на свои) */
 .carousel-control-prev-icon {
     background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23000" viewBox="0 0 8 8"%3E%3Cpath d="M4.5 0L3 1.5 5.5 4 3 6.5 4.5 8 8 4.5z"/%3E%3Cpath d="M0 0v8h2V0H0z"/%3E%3C/svg%3E');
 }
@@ -435,7 +433,6 @@ button[type="submit"]:hover {
     background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23000" viewBox="0 0 8 8"%3E%3Cpath d="M4.5 8L6 6.5 3.5 4 6 1.5 4.5 0 0 3.5z"/%3E%3Cpath d="M8 0v8H6V0h2z"/%3E%3C/svg%3E');
 }
 
-/* Для адаптивности на меньших экранах */
 @media (max-width: 768px) {
     .carousel-control-prev, .carousel-control-next {
         width: 15%;
@@ -450,7 +447,6 @@ button[type="submit"]:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Стили для кнопок управления каруселью */
 .topCarousel .carousel-control-prev,
 .topCarousel .carousel-control-next {
     position: absolute;
@@ -469,14 +465,11 @@ button[type="submit"]:hover {
 
 .topCarousel .carousel-control-prev-icon,
 .topCarousel .carousel-control-next-icon {
-    /* ... стили иконок ... */
 }
 
-/* Адаптивные стили */
 @media (max-width: 768px) {
     .topCarousel .carousel-control-prev,
     .topCarousel .carousel-control-next {
-        /* ... стили ... */
     }
 }
 .topCarousel .carousel-item .media {
@@ -488,19 +481,18 @@ button[type="submit"]:hover {
 
 .topCarousel .carousel-item .media-body {
     flex-grow: 1;
-    padding-left: 20px; /* Расстояние между обложкой и текстом */
+    padding-left: 20px;
 }
 
 .topCarousel .carousel-item .title {
-    font-size: 24px; /* Или размер в зависимости от вашего дизайна */
+    font-size: 24px;
     margin-bottom: 10px;
 }
 
 .topCarousel .carousel-item .description {
-    font-size: 14px; /* Или размер в зависимости от вашего дизайна */
+    font-size: 14px;
 }
 
-/* ... Остальные стили ... */
 .topCarousel .carousel-item .item-container {
     display: flex;
     align-items: center;
@@ -509,11 +501,11 @@ button[type="submit"]:hover {
 }
 
 .topCarousel .carousel-item .cover {
-    width: 3900px; /* Устанавливаем ширину */
-    height: auto; /* Высота будет автоматически рассчитана, чтобы сохранить пропорции */
-    object-fit: cover; /* Это свойство гарантирует, что изображение будет покрывать элемент без искажения пропорций */
-    border-radius: 10px; /* Добавляет закругленные углы, если нужно */
-    margin-right: 20px; /* Отступ справа от обложки до текста */
+    width: 3900px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 20px;
 }
 
 
@@ -532,7 +524,6 @@ button[type="submit"]:hover {
     font-size: 14px;
 }
 
-/* Адаптивные стили и стили контролов */
 @media (max-width: 768px) {
     .topCarousel .carousel-item .item-container {
         flex-direction: column;

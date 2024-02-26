@@ -16,7 +16,6 @@ router.post('/', async (req, res) => {
 
     const validationResult = await validateRegistration(username, password, password2);
     if (!validationResult.success) {
-        // Если валидация не успешна, возвращаем ошибку и сохраняем введенные данные
         return res.status(400).render('register', { errorMessage: validationResult.message, username, password, password2 });
     }
 

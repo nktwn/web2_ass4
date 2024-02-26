@@ -1,9 +1,8 @@
 const express = require('express');
 const axios = require('axios');
-const Banner = require('../models/banner'); // Подключение модели баннера
+const Banner = require('../models/banner');
 const router = express.Router();
 
-// Функция для получения данных об аниме или манге по их идентификаторам
 async function getMediaData(type, ids) {
     const baseUrl = type === 'anime' ? 'https://api.jikan.moe/v4/anime/' : 'https://api.jikan.moe/v4/manga/';
     const mediaData = [];
@@ -13,7 +12,7 @@ async function getMediaData(type, ids) {
             const url = baseUrl + id.trim();
             const response = await axios.get(url);
             mediaData.push(response.data.data);
-            await new Promise(resolve => setTimeout(resolve, 1000)); // Задержка 1 секунда
+            await new Promise(resolve => setTimeout(resolve, 1000));
         } catch (error) {
             console.error(`Ошибка при запросе к API для ID ${id}: `, error);
         }
@@ -32,11 +31,9 @@ router.get('/', async (req, res) => {
         const topAnimes = animeResponse.data.data;
         const topMangas = mangaResponse.data.data;
 
-        // Получение баннеров из базы данных
         const banners = await Banner.find();
-        console.log("Баннеры: ", banners); // Логирование полученных баннеров
+        console.log("Баннеры: ", banners);
 
-        // Для каждого баннера получаем данные об аниме или манге
         for (let banner of banners) {
             banner.mediaData = await getMediaData(banner.type, banner.items);
         }

@@ -72,5 +72,41 @@
     </form>
 
 </div>
+<h2>Existing Banners</h2>
+<% banners.forEach(banner => { %>
+    <div>
+        <p>Title: <%= banner.title %></p>
+        <p>Type: <%= banner.type %></p>
+        <p>Items: <%= banner.items.join(', ') %></p>
+
+        <!-- Кнопка редактирования -->
+        <button onclick="document.getElementById('editForm<%= banner._id %>').style.display='block'">Edit</button>
+
+        <!-- Форма редактирования баннера -->
+        <div id="editForm<%= banner._id %>" style="display:none;">
+            <form action="/admin/update-banner/<%= banner._id %>" method="POST">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" value="<%= banner.title %>" required><br>
+
+                <label for="type">Type:</label>
+                <select id="type" name="type">
+                    <option value="anime" <% if (banner.type === 'anime') { %> selected <% } %>>Anime</option>
+                    <option value="manga" <% if (banner.type === 'manga') { %> selected <% } %>>Manga</option>
+                </select><br>
+
+                <label for="items">Items (comma separated):</label>
+                <input type="text" id="items" name="items" value="<%= banner.items.join(', ') %>" required><br>
+
+                <button type="submit">Update Banner</button>
+            </form>
+        </div>
+
+        <!-- Кнопка удаления -->
+        <form action="/admin/delete-banner/<%= banner._id %>" method="POST" style="display:inline;">
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+<% }); %>
+
 
 <%- include('footer') %>

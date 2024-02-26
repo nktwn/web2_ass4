@@ -9,10 +9,11 @@ const jwt = require('jsonwebtoken');
 router.get('/', async (req, res) => {
     try {
         const users = await User.find();
-        res.render('admin', { users });
+        const banners = await Banner.find();
+        res.render('admin', { users, banners });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ errorMessage: 'Error fetching users' });
+        res.status(500).json({ errorMessage: 'Error fetching data' });
     }
 });
 
@@ -77,17 +78,44 @@ router.post('/update/:id', async (req, res) => {
 router.post('/create-banner', async (req, res) => {
     try {
         const { title, type, items } = req.body;
-        const itemIDs = items.split(',').map(id => id.trim()); // Удаляем пробелы вокруг ID
+        const itemIDs = items.split(',').map(id => id.trim());
 
 
         const banner = new Banner({ title, type, items: itemIDs });
         await banner.save();
 
-        res.redirect('/admin'); // Перенаправьте админа обратно на страницу админа
+        res.redirect('/admin');
     } catch (error) {
         console.error(error);
         res.status(500).send('Error creating banner');
     }
 });
 
+router.post('/update-banner/:id', async (req, res) => {
+    const { id } = req.params;
+    const { title, type, items } = req.body;
+    const itemIDs = items.split(',').map(item => item.trim()); // Преобразование строки в массив
+
+    try {
+        await Banner.findByIdAndUpdate(id, { title, type, items: itemIDs });
+        res.redirect('/admin');
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ errorMessage: 'Error updating banner' });
+    }
+});
+
+
+router.post('/delete-banner/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        if (id !== 'ID_FOR_TOP_ANIME' && id !== 'ID_FOR_TOP_MANGA') {
+            await Banner.findByIdAndDelete(id);
+        }
+        res.redirect('/admin');
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ errorMessage: 'Error deleting banner' });
+    }
+});
 module.exports = router;
