@@ -1,6 +1,9 @@
 <%- include('header') %>
 
 <div class="user-profile">
+
+    <h1 class="welcome-message">Hello, <%= username %>!</h1>
+
     <div class="user-info">
         <h2>User Information</h2>
         <p>Username: <%= user.username %></p>
@@ -11,7 +14,6 @@
 
     <div class="center">
         <h1>User Profile</h1>
-        <h3 class="welcome-message">Welcome, <%= username %>!</h3>
 
         <% if (typeof errorMessage !== 'undefined') { %>
             <p class="error-message"><%= errorMessage %></p>
@@ -32,5 +34,4 @@
         </form>
     </div>
 </div>
-
 <%- include('footer') %>

@@ -63,9 +63,8 @@
 
         <button class="create-button" type="submit">Create User</button>
     </form>
-</div>
 
-<div class="existing-banners">
+
     <h2>Existing Banners</h2>
     <% banners.forEach(banner => { %>
         <div>
@@ -96,9 +95,8 @@
             </form>
         </div>
     <% }); %>
-</div>
 
-<div class="create-banner">
+
     <h2>Create Banner</h2>
     <form action="/admin/create-banner" method="post">
         <label for="title">Banner Title:</label>
@@ -116,5 +114,6 @@
         <button type="submit">Create Banner</button>
     </form>
 </div>
+
 
 <%- include('footer') %>
