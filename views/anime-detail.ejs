@@ -1,0 +1,22 @@
+<%- include('header') %>
+
+<div class="anime-detail-container">
+    <h1><%= anime.title %></h1>
+    <div class="anime-detail">
+        <img src="<%= anime.images.jpg.image_url %>" alt="<%= anime.title %> cover">
+        <div class="anime-detail-content">
+            <h2>Summary</h2>
+            <p><%= anime.synopsis %></p>
+            <h2>Details</h2>
+            <ul>
+                <li>Type: <%= anime.type %></li>
+                <li>Episodes: <%= anime.episodes %></li>
+                <li>Status: <%= anime.status %></li>
+                <li>Aired: <%= anime.aired.string %></li>
+                <li>Rating: <%= anime.rating %></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<%- include('footer') %>

@@ -1,0 +1,22 @@
+<%- include('header') %>
+
+<div class="manga-detail-container">
+    <h1><%= manga.title %></h1>
+    <div class="manga-detail">
+        <img src="<%= manga.images.jpg.image_url %>" alt="<%= manga.title %> cover">
+        <div class="manga-detail-content">
+            <h2>Summary</h2>
+            <p><%= manga.synopsis %></p>
+            <h2>Details</h2>
+            <ul>
+                <li>Type: <%= manga.type %></li>
+                <li>Volumes: <%= manga.volumes %></li>
+                <li>Chapters: <%= manga.chapters %></li>
+                <li>Status: <%= manga.status %></li>
+                <li>Published: <%= manga.published.string %></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<%- include('footer') %>

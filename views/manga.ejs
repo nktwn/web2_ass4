@@ -10,13 +10,15 @@
     <% if (mangas) { %>
         <div class="manga-list">
             <% mangas.forEach(manga => { %>
-                <div class="manga-card">
-                    <img src="<%= manga.images.jpg.image_url %>" alt="Manga cover">
-                    <div class="manga-card-content">
-                        <h2 class="manga-card-title"><%= manga.title %></h2>
-                        <p class="manga-card-description"><%= manga.synopsis %></p>
+                <a href="/manga/<%= manga.mal_id %>" class="manga-card-link">
+                    <div class="manga-card">
+                        <img src="<%= manga.images.jpg.image_url %>" alt="Manga cover">
+                        <div class="manga-card-content">
+                            <h2 class="manga-card-title"><%= manga.title %></h2>
+                            <p class="manga-card-description"><%= manga.synopsis %></p>
+                        </div>
                     </div>
-                </div>
+                </a>
             <% }); %>
         </div>
     <% } else if (typeof errorMessage !== 'undefined') { %>

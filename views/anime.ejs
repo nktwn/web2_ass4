@@ -10,13 +10,15 @@
     <% if (animes) { %>
         <div class="anime-list">
             <% animes.forEach(anime => { %>
-                <div class="anime-card">
-                    <img src="<%= anime.images.jpg.image_url %>" alt="Anime cover">
-                    <div class="anime-card-container">
-                        <h2 class="anime-card-title"><%= anime.title %></h2>
-                        <p class="anime-card-description"><%= anime.synopsis %></p>
+                <a href="/anime/<%= anime.mal_id %>" class="anime-card-link">
+                    <div class="anime-card">
+                        <img src="<%= anime.images.jpg.image_url %>" alt="Anime cover">
+                        <div class="anime-card-container">
+                            <h2 class="anime-card-title"><%= anime.title %></h2>
+                            <p class="anime-card-description"><%= anime.synopsis %></p>
+                        </div>
                     </div>
-                </div>
+                </a>
             <% }); %>
         </div>
     <% } else if (typeof errorMessage !== 'undefined') { %>

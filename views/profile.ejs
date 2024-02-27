@@ -1,25 +1,36 @@
 <%- include('header') %>
-<div class="center">
-    <h1>User Profile</h1>
-    <h3 style="color: aquamarine;">Welcome, <%= username %>!</h3>
 
-    <% if (typeof errorMessage !== 'undefined') { %>
-        <p style="color: red;"><%= errorMessage %></p>
-    <% } %>
-    <% if (typeof successMessage !== 'undefined') { %>
-        <p style="color: green;"><%= successMessage %></p>
-    <% } %>
+<div class="user-profile">
+    <div class="user-info">
+        <h2>User Information</h2>
+        <p>Username: <%= user.username %></p>
+        <p>Phone: <%= user.phoneNumber %></p>
+        <p>Age: <%= user.age %></p>
+        <p>Favorite Anime: <%= user.favoriteAnime %></p>
+    </div>
 
-    <form action="/profile/delete" method="POST">
-        <button class="type2_button" type="submit">Delete Account</button>
-    </form>
+    <div class="center">
+        <h1>User Profile</h1>
+        <h3 class="welcome-message">Welcome, <%= username %>!</h3>
 
-    <form action="/profile/pass" method="POST">
-        <input type="password" name="password" placeholder="Old Password">
-        <input type="password" name="password2" placeholder="New Password">
-        <input type="password" name="password3" placeholder="Сonfirm New Password">
-        <button class="type2_button" type="submit">Change Password</button>
-    </form>
+        <% if (typeof errorMessage !== 'undefined') { %>
+            <p class="error-message"><%= errorMessage %></p>
+        <% } %>
+        <% if (typeof successMessage !== 'undefined') { %>
+            <p class="success-message"><%= successMessage %></p>
+        <% } %>
+
+        <form action="/profile/delete" method="POST">
+            <button class="delete-button" type="submit">Delete Account</button>
+        </form>
+
+        <form action="/profile/pass" method="POST">
+            <input type="password" name="password" placeholder="Old Password">
+            <input type="password" name="password2" placeholder="New Password">
+            <input type="password" name="password3" placeholder="Confirm New Password">
+            <button class="change-password-button" type="submit">Change Password</button>
+        </form>
+    </div>
 </div>
 
 <%- include('footer') %>

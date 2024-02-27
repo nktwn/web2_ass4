@@ -5,7 +5,19 @@ const router = express.Router();
 router.get('/', (req, res) => {
     res.render('anime', { animes: null });
 });
+router.get('/:id', async (req, res) => {
+    const animeId = req.params.id;
+    const url = `https://api.jikan.moe/v4/anime/${animeId}`;
 
+    try {
+        const response = await axios.get(url);
+        const anime = response.data.data;
+        res.render('anime-detail', { anime });
+    } catch (error) {
+        console.error(error);
+        res.render('error', { message: 'Error retrieving anime details' });
+    }
+});
 
 router.post('/', async (req, res) => {
     const query = req.body.query;
@@ -20,7 +32,5 @@ router.post('/', async (req, res) => {
         res.render('anime', { animes: null, errorMessage: 'Error retrieving anime data' });
     }
 });
-
-
 
 module.exports = router;

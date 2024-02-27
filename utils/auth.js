@@ -48,7 +48,7 @@ const ifAdmin = (req, res, next) => {
             res.clearCookie('token');
             return res.redirect('/login');
         } else {
-            if (decoded.username === "admin" && decoded.isAdmin) {
+            if (decoded.isAdmin) {
                 return next();
             } else {
                 return res.status(403).send('Unauthorized Access - Admin Only');
