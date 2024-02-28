@@ -40,7 +40,19 @@
                 <img src="<%= anime.image_url %>" alt="<%= anime.title %>">
                 <p><%= anime.title %></p>
                 <p>Status: <%= anime.status %></p>
-                <!-- Добавьте здесь кнопки для изменения статуса или удаления -->
+                <form action="/profile/updateAnimeStatus" method="POST">
+                    <input type="hidden" name="animeId" value="<%= anime.animeId %>">
+                    <select name="newStatus">
+                        <option value="To Watch">To Watch</option>
+                        <option value="Watching">Watching</option>
+                        <option value="Watched">Watched</option>
+                    </select>
+                    <button type="submit">Update Status</button>
+                </form>
+                <form action="/profile/deleteAnime" method="POST">
+                    <input type="hidden" name="animeId" value="<%= anime.animeId %>">
+                    <button type="submit">Delete</button>
+                </form>
             </div>
         <% }) %>
     </div>
@@ -52,7 +64,19 @@
                 <img src="<%= manga.image_url %>" alt="<%= manga.title %>">
                 <p><%= manga.title %></p>
                 <p>Status: <%= manga.status %></p>
-                <!-- кнопки для изменения статуса или удаления -->
+                <form action="/profile/updateMangaStatus" method="POST">
+                    <input type="hidden" name="mangaId" value="<%= manga.mangaId %>">
+                    <select name="newStatus">
+                        <option value="To Read">To Read</option>
+                        <option value="Reading">Reading</option>
+                        <option value="Read">Read</option>
+                    </select>
+                    <button type="submit">Update Status</button>
+                </form>
+                <form action="/profile/deleteManga" method="POST">
+                    <input type="hidden" name="mangaId" value="<%= manga.mangaId %>">
+                    <button type="submit">Delete</button>
+                </form>
             </div>
         <% }) %>
     </div>

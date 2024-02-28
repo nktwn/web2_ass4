@@ -1,10 +1,26 @@
 # Anime Catalog Project
 
 ## Introduction
-
-Welcome to the Anime Catalog Project! This application is a comprehensive platform for anime enthusiasts offering a rich, interactive, and multilingual experience.
+Welcome to the Anime and Manga Catalog Project! This application is a comprehensive platform for anime enthusiasts offering a rich and interactive.
 
 ![](public/anime.gif)
+
+## Brief excursion
+On My Web-site you can:
+1. <b>Search for anime and manga in a unique search engine and read information about each work on a separate page.</b>
+2. <b>Find out the latest anime from unique carousel banners on the main page. Each banner can store more than one image, title and description.</b>
+3. <b>As an admin, add new banners such as anime or manga. This is relevant when creating collections of anime or manga, for example, top detective stories. To do this, you need to log in as an administrator, select the name of the banner, its type and enter the id of the anime and manga from the api, separated by commas. For example: `https://api.jikan.moe/v4/anime/1`. </b>
+```
+IMPORTANT!: the api website does not have information on all IDs; they may have been deleted.
+
+List of the first available anime IDs from the api: 1, 5, 6, 7, 8
+List of the first available manga IDs from the api: 1, 2, 3, 4, 7
+```
+![](public/img_1.png)
+4. <b>Going to the anime or manga page, add them to your list, which is located on the profile page. There the user can change the status of an element in the list or delete it.</b>
+5. <b>Delete and edit existing banners. Important note! You cannot delete or edit the very first two banners; they are considered the main ones.</b>
+6. <b>As an admin, add new users or delete, edit, or give admin rights to existing users.</b>
+
 ## Features
 
 ### Anime Catalog
@@ -24,7 +40,7 @@ Password: 1234567
 
 ### Deploy
 ```
-https://web2-ass4-nis-uralsk-the-best.onrender.com/login
+https://web2-ass4-nis-uralsk-the-best.onrender.com
 ```
 
 ### User Registration
@@ -35,6 +51,7 @@ https://web2-ass4-nis-uralsk-the-best.onrender.com/login
 - **Password Verification:** Passwords are retrieved in hashed form and compared with the database hash.
 - **Authorization Checks:** Routes requiring certain permissions have integrated authorization checks.
 - **Admin Username:** The admin username is uniquely tied to the project creator’s name.
+![](public/img.png)
 
 ### Middleware for Authentication
 - **Route Protection:** Middleware is implemented to protect routes that require authentication.

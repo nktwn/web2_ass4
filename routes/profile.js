@@ -91,4 +91,57 @@ router.post('/updateAnimeStatus', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+
+router.post('/deleteAnime', async (req, res) => {
+    const { animeId } = req.body;
+    const decodedToken = jwt.decode(req.cookies.token);
+    const userId = decodedToken.userId;
+
+    try {
+        await User.updateOne(
+            { _id: userId },
+            { $pull: { animeList: { animeId: animeId } } }
+        );
+        res.redirect('/profile');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+router.post('/updateMangaStatus', async (req, res) => {
+    const { mangaId, newStatus } = req.body;
+    const decodedToken = jwt.decode(req.cookies.token);
+    const userId = decodedToken.userId;
+
+    try {
+        await User.updateOne(
+            { _id: userId, 'mangaList.mangaId': mangaId },
+            { $set: { 'mangaList.$.status': newStatus } }
+        );
+        res.redirect('/profile');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+router.post('/deleteManga', async (req, res) => {
+    const { mangaId } = req.body;
+    const decodedToken = jwt.decode(req.cookies.token);
+    const userId = decodedToken.userId;
+
+    try {
+        await User.updateOne(
+            { _id: userId },
+            { $pull: { mangaList: { mangaId: mangaId } } }
+        );
+        res.redirect('/profile');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
 module.exports = router;

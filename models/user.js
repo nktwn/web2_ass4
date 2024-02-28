@@ -12,13 +12,13 @@ const userSchema = new mongoose.Schema({
         animeId: String,
         title: String,
         image_url: String,
-        status: { type: String, default: 'To Watch' } // 'To Watch', 'Watching', 'Watched'
+        status: { type: String, default: 'To Watch' }
     }],
     mangaList: [{
         mangaId: String,
         title: String,
         image_url: String,
-        status: { type: String, default: 'To Read' } // 'To Read', 'Reading', 'Read'
+        status: { type: String, default: 'To Read' }
     }]
 });
 module.exports = mongoose.model('users', userSchema);

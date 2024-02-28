@@ -348,70 +348,93 @@ label {
 /* User Profile */
 /*------------------------------------------------------------------------------------------*/
 .user-profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 80vh;
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 .user-info {
-    background-color: #f8f8f8;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    background-color: #f2f2f2;
+    padding: 15px;
+    border-radius: 8px;
     margin-bottom: 20px;
-    width: 80%;
-    max-width: 600px;
+}
+.user-info h2 {
+    margin-top: 0;
+}
+.anime-list, .manga-list {
+    margin-bottom: 30px;
+}
+.anime-list h2, .manga-list h2 {
     text-align: center;
+    margin-bottom: 15px;
 }
-.user-info h2, .user-info p {
-    margin-bottom: 10px;
-}
-.welcome-message, .error-message, .success-message {
-    margin-bottom: 20px;
-    width: 80%;
-    text-align: center;
-}
-form {
+.anime-list .items, .manga-list .items {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.anime-item, .manga-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px;
+    display: flex;
     align-items: center;
-    width: 100%;
-}
-input[type="password"] {
-    width: 70%;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-.delete-button, .change-password-button {
-    width: 70%;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    color: white;
-    cursor: pointer;
-}
-.delete-button {
-    background-color: #e74c3c;
-}
-.delete-button:hover {
-    background-color: #c0392b;
-}
-.change-password-button {
-    background-color: var(--main-color);
-}
-.change-password-button:hover {
-    background-color: var(--hover-color);
+    flex-basis: calc(33% - 20px);
 }
 @media (max-width: 768px) {
-    .user-info, form {
-        width: 90%;
+    .anime-item, .manga-item {
+        flex-basis: calc(50% - 20px);
     }
-    input[type="password"], .delete-button, .change-password-button {
-        width: 80%;
+}
+@media (max-width: 480px) {
+    .anime-item, .manga-item {
+        flex-basis: 100%;
     }
+}
+.anime-item img, .manga-item img {
+    max-width: 100px;
+    margin-right: 20px;
+    border-radius: 4px;
+}
+.anime-item p, .manga-item p {
+    margin: 5px 0;
+    flex-grow: 1;
+}
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+button:hover {
+    background-color: #45a049;
+}
+.delete-button {
+    background-color: #f44336;
+}
+.delete-button:hover {
+    background-color: #d73833;
+}
+input[type=password], select, textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=submit]:hover {
+    background-color: #45a049;
 }
 /*------------------------------------------------------------------------------------------*/
 
