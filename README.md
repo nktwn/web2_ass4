@@ -4,6 +4,7 @@
 
 Welcome to the Anime Catalog Project! This application is a comprehensive platform for anime enthusiasts offering a rich, interactive, and multilingual experience.
 
+![](public/anime.gif)
 ## Features
 
 ### Anime Catalog
@@ -19,6 +20,11 @@ Welcome to the Anime Catalog Project! This application is a comprehensive platfo
 ```
 Login: Nurkhat
 Password: 1234567
+```
+
+### Deploy
+```
+https://web2-ass4-nis-uralsk-the-best.onrender.com/login
 ```
 
 ### User Registration
