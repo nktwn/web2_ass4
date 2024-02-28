@@ -74,4 +74,21 @@ router.post('/pass', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+
+router.post('/updateAnimeStatus', async (req, res) => {
+    const { animeId, newStatus } = req.body;
+    const decodedToken = jwt.decode(req.cookies.token);
+    const userId = decodedToken.userId;
+
+    try {
+        await User.updateOne(
+            { _id: userId, 'animeList.animeId': animeId },
+            { $set: { 'animeList.$.status': newStatus } }
+        );
+        res.redirect('/profile');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
 module.exports = router;

@@ -8,5 +8,17 @@ const userSchema = new mongoose.Schema({
     isAdmin: { type: Boolean, default: false },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
+    animeList: [{
+        animeId: String,
+        title: String,
+        image_url: String,
+        status: { type: String, default: 'To Watch' } // 'To Watch', 'Watching', 'Watched'
+    }],
+    mangaList: [{
+        mangaId: String,
+        title: String,
+        image_url: String,
+        status: { type: String, default: 'To Read' } // 'To Read', 'Reading', 'Read'
+    }]
 });
 module.exports = mongoose.model('users', userSchema);

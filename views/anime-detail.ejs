@@ -17,5 +17,11 @@
             </ul>
         </div>
     </div>
+    <form action="/anime/addToList" method="POST">
+        <input type="hidden" name="animeId" value="<%= anime.mal_id %>">
+        <input type="hidden" name="title" value="<%= anime.title %>">
+        <input type="hidden" name="image_url" value="<%= anime.images.jpg.image_url %>">
+        <button type="submit">Add to My List</button>
+    </form>
 </div>
 <%- include('footer') %>

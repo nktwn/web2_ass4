@@ -33,5 +33,28 @@
             <button class="change-password-button" type="submit">Change Password</button>
         </form>
     </div>
+    <div class="anime-list">
+        <h2>My Anime List</h2>
+        <% user.animeList.forEach(anime => { %>
+            <div class="anime-item">
+                <img src="<%= anime.image_url %>" alt="<%= anime.title %>">
+                <p><%= anime.title %></p>
+                <p>Status: <%= anime.status %></p>
+                <!-- Добавьте здесь кнопки для изменения статуса или удаления -->
+            </div>
+        <% }) %>
+    </div>
+
+    <div class="manga-list">
+        <h2>My Manga List</h2>
+        <% user.mangaList.forEach(manga => { %>
+            <div class="manga-item">
+                <img src="<%= manga.image_url %>" alt="<%= manga.title %>">
+                <p><%= manga.title %></p>
+                <p>Status: <%= manga.status %></p>
+                <!-- кнопки для изменения статуса или удаления -->
+            </div>
+        <% }) %>
+    </div>
 </div>
 <%- include('footer') %>
