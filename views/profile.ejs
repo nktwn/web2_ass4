@@ -2,18 +2,18 @@
 
 <div class="user-profile">
 
-    <h1 class="welcome-message">Hello, <%= username %>!</h1>
+    <h1 class="welcome-message"><%= __('WELCOME_MESSAGE') %> Nurkhat!</h1>
 
     <div class="user-info">
-        <h2>User Information</h2>
-        <p>Username: <%= user.username %></p>
-        <p>Phone: <%= user.phoneNumber %></p>
-        <p>Age: <%= user.age %></p>
-        <p>Favorite Anime: <%= user.favoriteAnime %></p>
+        <h2><%= __('USER_INFO') %></h2>
+        <p><%= __('USERNAME') %>: <%= user.username %></p>
+        <p><%= __('PHONE') %>: <%= user.phoneNumber %></p>
+        <p><%= __('AGE') %>: <%= user.age %></p>
+        <p><%= __('FAVORITE_ANIME') %>: <%= user.favoriteAnime %></p>
     </div>
 
     <div class="center">
-        <h1>User Profile</h1>
+        <h1><%= __('USER_PROFILE_TITLE') %></h1>
 
         <% if (typeof errorMessage !== 'undefined') { %>
             <p class="error-message"><%= errorMessage %></p>
@@ -23,59 +23,59 @@
         <% } %>
 
         <form action="/profile/delete" method="POST">
-            <button class="delete-button" type="submit">Delete Account</button>
+            <button class="delete-button" type="submit"><%= __('DELETE_ACCOUNT') %></button>
         </form>
 
         <form action="/profile/pass" method="POST">
-            <input type="password" name="password" placeholder="Old Password">
-            <input type="password" name="password2" placeholder="New Password">
-            <input type="password" name="password3" placeholder="Confirm New Password">
-            <button class="change-password-button" type="submit">Change Password</button>
+            <input type="password" name="password" placeholder="<%= __('OLD_PASSWORD') %>">
+            <input type="password" name="password2" placeholder="<%= __('NEW_PASSWORD') %>">
+            <input type="password" name="password3" placeholder="<%= __('CONFIRM_NEW_PASSWORD') %>">
+            <button class="change-password-button" type="submit"><%= __('CHANGE_PASSWORD') %></button>
         </form>
     </div>
     <div class="anime-list">
-        <h2>My Anime List</h2>
+        <h2><%= __('MY_ANIME_LIST') %></h2>
         <% user.animeList.forEach(anime => { %>
             <div class="anime-item">
                 <img src="<%= anime.image_url %>" alt="<%= anime.title %>">
                 <p><%= anime.title %></p>
-                <p>Status: <%= anime.status %></p>
+                <p><%= __('STATUS') %>: <%= anime.status %></p>
                 <form action="/profile/updateAnimeStatus" method="POST">
                     <input type="hidden" name="animeId" value="<%= anime.animeId %>">
                     <select name="newStatus">
-                        <option value="To Watch">To Watch</option>
-                        <option value="Watching">Watching</option>
-                        <option value="Watched">Watched</option>
+                        <option value="<%= __('TO_WATCH') %>"><%= __('TO_WATCH') %></option>
+                        <option value="<%= __('WATCHING') %>"><%= __('WATCHING') %></option>
+                        <option value="<%= __('WATCHED') %>"><%= __('WATCHED') %></option>
                     </select>
-                    <button type="submit">Update Status</button>
+                    <button type="submit"><%= __('UPDATE_STATUS') %></button>
                 </form>
                 <form action="/profile/deleteAnime" method="POST">
                     <input type="hidden" name="animeId" value="<%= anime.animeId %>">
-                    <button type="submit">Delete</button>
+                    <button type="submit"><%= __('DELETE') %></button>
                 </form>
             </div>
         <% }) %>
     </div>
 
     <div class="manga-list">
-        <h2>My Manga List</h2>
+        <h2><%= __('MY_MANGA_LIST') %></h2>
         <% user.mangaList.forEach(manga => { %>
             <div class="manga-item">
                 <img src="<%= manga.image_url %>" alt="<%= manga.title %>">
                 <p><%= manga.title %></p>
-                <p>Status: <%= manga.status %></p>
+                <p><%= __('STATUS') %>: <%= manga.status %></p>
                 <form action="/profile/updateMangaStatus" method="POST">
                     <input type="hidden" name="mangaId" value="<%= manga.mangaId %>">
                     <select name="newStatus">
-                        <option value="To Read">To Read</option>
-                        <option value="Reading">Reading</option>
-                        <option value="Read">Read</option>
+                        <option value="<%= __('TO_READ') %>"><%= __('TO_READ') %></option>
+                        <option value="<%= __('READING') %>"><%= __('READING') %></option>
+                        <option value="<%= __('READ') %>"><%= __('READ') %></option>
                     </select>
-                    <button type="submit">Update Status</button>
+                    <button type="submit"><%= __('UPDATE_STATUS') %></button>
                 </form>
                 <form action="/profile/deleteManga" method="POST">
                     <input type="hidden" name="mangaId" value="<%= manga.mangaId %>">
-                    <button type="submit">Delete</button>
+                    <button type="submit"><%= __('DELETE') %></button>
                 </form>
             </div>
         <% }) %>

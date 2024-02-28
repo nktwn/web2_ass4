@@ -5,9 +5,9 @@
     <div class="manga-detail">
         <img src="<%= manga.images.jpg.image_url %>" alt="<%= manga.title %> cover">
         <div class="manga-detail-content">
-            <h2>Summary</h2>
+            <h2><%= __('SUMMARY') %></h2>
             <p><%= manga.synopsis %></p>
-            <h2>Details</h2>
+            <h2><%= __('DETAILS') %></h2>
             <ul>
                 <li>Type: <%= manga.type %></li>
                 <li>Volumes: <%= manga.volumes %></li>
@@ -16,13 +16,12 @@
                 <li>Published: <%= manga.published.string %></li>
             </ul>
         </div>
-
     </div>
     <form action="/manga/addToList" method="POST">
         <input type="hidden" name="mangaId" value="<%= manga.mal_id %>">
         <input type="hidden" name="title" value="<%= manga.title %>">
         <input type="hidden" name="image_url" value="<%= manga.images.jpg.image_url %>">
-        <button type="submit">Add to My List</button>
+        <button type="submit"><%= __('ADD_TO_MY_LIST') %></button>
     </form>
 </div>
 

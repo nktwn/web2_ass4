@@ -96,6 +96,20 @@ textarea:focus {
     border-color: var(--main-color);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
+.language-switcher {
+    margin-right: 20px;
+}
+.language-switcher a {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333;
+}
+.language-switcher a:hover {
+    background-color: #f0f0f0;
+}
 /*------------------------------------------------------------------------------------------*/
 
 

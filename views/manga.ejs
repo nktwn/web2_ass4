@@ -1,13 +1,14 @@
 <%- include('header') %>
 
 <div class="manga-container">
-    <h1>Manga Search</h1>
+    <h1><%= __('MANGA_SEARCH') %></h1>
     <form action="/manga" method="post">
-        <input type="text" name="query" placeholder="Enter manga title" required>
-        <button type="submit">Search</button>
+        <input type="text" name="query" placeholder="<%= __('ENTER_MANGA_TITLE') %>" required>
+        <button type="submit"><%= __('SEARCH') %></button>
     </form>
 
-    <% if (mangas) { %>
+
+<% if (mangas) { %>
         <div class="manga-list">
             <% mangas.forEach(manga => { %>
                 <a href="/manga/<%= manga.mal_id %>" class="manga-card-link">

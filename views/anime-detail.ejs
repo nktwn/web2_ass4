@@ -5,9 +5,9 @@
     <div class="anime-detail">
         <img src="<%= anime.images.jpg.image_url %>" alt="<%= anime.title %> cover">
         <div class="anime-detail-content">
-            <h2>Summary</h2>
+            <h2><%= __('SUMMARY') %></h2>
             <p><%= anime.synopsis %></p>
-            <h2>Details</h2>
+            <h2><%= __('DETAILS') %></h2>
             <ul>
                 <li>Type: <%= anime.type %></li>
                 <li>Episodes: <%= anime.episodes %></li>
@@ -21,7 +21,7 @@
         <input type="hidden" name="animeId" value="<%= anime.mal_id %>">
         <input type="hidden" name="title" value="<%= anime.title %>">
         <input type="hidden" name="image_url" value="<%= anime.images.jpg.image_url %>">
-        <button type="submit">Add to My List</button>
+        <button type="submit"><%= __('ADD_TO_MY_LIST') %></button>
     </form>
 </div>
 <%- include('footer') %>

@@ -1,10 +1,10 @@
 <%- include('header') %>
 
 <div class="anime-container">
-    <h1>Anime Search</h1>
+    <h1><%= __('ANIME_SEARCH') %></h1>
     <form action="/anime" method="post">
-        <input type="text" name="query" placeholder="Enter anime title" required>
-        <button type="submit">Search</button>
+        <input type="text" name="query" placeholder="<%= __('ENTER_ANIME_TITLE') %>" required>
+        <button type="submit"><%= __('SEARCH') %></button>
     </form>
 
     <% if (animes) { %>

@@ -15,30 +15,39 @@
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul>
-                <div class="logo">
-                    <img src="/logo.png" alt="Logo">
-                </div>
-                <% if (loggedIn) { %>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/profile">Profile</a></li>
-                    <li><a href="/anime">Anime</a></li>
-                    <li><a href="/manga">Manga</a></li>
-                    <% if (admin) { %>
-                        <li><a href="/admin">Admin</a></li>
-                    <% } %>
-                    <li><a href="/logout">Logout</a></li>
-
+<header>
+    <nav>
+        <ul>
+            <div class="logo">
+                <img src="/logo.png" alt="Logo">
+            </div>
+            <% if (loggedIn) { %>
+                <li><a href="/"><%= __('HOME') %></a></li>
+                <li><a href="/profile"><%= __('PROFILE') %></a></li>
+                <li><a href="/anime"><%= __('ANIME2') %></a></li>
+                <li><a href="/manga"><%= __('MANGA2') %></a></li>
+                <% if (admin) { %>
+                    <li><a href="/admin"><%= __('ADMIN') %></a></li>
                 <% } %>
+                <li><a href="/logout"><%= __('LOGOUT') %></a></li>
+
+            <% } %>
 
 
 
-                <% if (!loggedIn) { %>
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/register">Register</a></li>
-                <% } %>
-            </ul>
-        </nav>
-    </header>
+            <% if (!loggedIn) { %>
+                <li><a href="/login"><%= __('LOGIN') %></a></li>
+                <li><a href="/register"><%= __('REGISTER') %></a></li>
+            <% } %>
+        </ul>
+
+        <div class="language-switcher">
+            <a href="/change-lang/en"><%= __('LANGUAGE_EN') %></a>
+            <a href="/change-lang/ru"><%= __('LANGUAGE_RU') %></a>
+        </div>
+    </nav>
+
+</header>
+</body>
+
+</html>

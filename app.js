@@ -6,9 +6,20 @@ const cookieParser = require('cookie-parser');
 require('dotenv').config();
 const animeRoutes = require('./routes/anime');
 const mangaRoutes = require('./routes/manga');
-const { verifyToken, redirectToHomeIfLoggedIn, ifAdmin } = require('./utils/auth'); 
-
+const { verifyToken, redirectToHomeIfLoggedIn, ifAdmin } = require('./utils/auth');
 const app = express();
+const i18n = require("i18n");
+
+i18n.configure({
+    locales: ['en', 'ru'],
+    directory: __dirname + '/locales',
+    defaultLocale: 'en',
+    cookie: 'lang',
+});
+
+app.use(i18n.init);
+
+
 
 
 mongoose.connect(process.env.MONGO_URI)
@@ -24,6 +35,9 @@ app.use(express.static('public'));
 app.use(cookieParser());
 
 app.use((req, res, next) => {
+    if (req.cookies.lang) {
+        req.setLocale(req.cookies.lang);
+    }
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers','Origin, X-Requested-With, Content-Type, Accept, Authorization');
     if(req.method === 'OPTIONS'){
@@ -54,6 +68,10 @@ app.use('/anime', animeRoutes);
 app.use('/manga', mangaRoutes);
 app.use('/profile', verifyToken, require('./routes/profile'));
 app.use('/admin', verifyToken, ifAdmin, require('./routes/admin'));
+app.get('/change-lang/:lang', (req, res) => {
+    res.cookie('lang', req.params.lang, { maxAge: 900000, httpOnly: true });
+    res.redirect('back');
+});
 
 app.use((req, res, next) => {
     res.status(404).send('<center><h1>404 Not Found</h1></center>'); 

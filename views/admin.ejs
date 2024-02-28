@@ -1,7 +1,7 @@
 <%- include('header') %>
 
 <div class="admin-container">
-    <h1 class="admin-title">Admin Dashboard</h1>
+    <h1 class="admin-title"><%= __('ADMIN_DASHBOARD') %></h1>
 
     <% if (typeof errorMessage !== 'undefined') { %>
         <p class="error-message"><%= errorMessage %></p>
@@ -14,32 +14,32 @@
     <table class="user-table">
         <thead>
         <tr>
-            <th>Username</th>
-            <th>Is Admin</th>
-            <th>Actions</th>
+            <th><%= __('USERNAME') %></th>
+            <th><%= __('IS_ADMIN') %></th>
+            <th><%= __('ACTIONS') %></th>
         </tr>
         </thead>
         <tbody>
         <% users.forEach(user => { %>
             <tr>
                 <td><%= user.username %></td>
-                <td><%= user.isAdmin ? 'Yes' : 'No' %></td>
+                <td><%= user.isAdmin ? __('YES') : __('NO') %></td>
                 <td>
                     <form action="/admin/update/<%= user._id %>" method="POST" class="update-form">
-                        <label for="newUsername-<%= user._id %>">New Username:</label>
+                        <label for="newUsername-<%= user._id %>"><%= __('NEW_USERNAME') %>:</label>
                         <input type="text" id="newUsername-<%= user._id %>" name="newUsername" value="<%= user.username %>" required>
 
-                        <label for="password-<%= user._id %>">New Password:</label>
+                        <label for="password-<%= user._id %>"><%= __('NEW_PASSWORD') %>:</label>
                         <input type="password" id="password-<%= user._id %>" name="password">
 
-                        <label for="isAdmin-<%= user._id %>">Is Admin:</label>
+                        <label for="isAdmin-<%= user._id %>"><%= __('IS_ADMIN') %>:</label>
                         <input type="checkbox" id="isAdmin-<%= user._id %>" name="isAdmin" <% if (user.isAdmin) { %>checked<% } %>>
 
-                        <button class="update-button" type="submit">Update</button>
+                        <button class="update-button" type="submit"><%= __('UPDATE') %></button>
                     </form>
 
                     <form action="/admin/delete/<%= user._id %>" method="POST" class="delete-form">
-                        <button class="delete-button" type="submit">Delete</button>
+                        <button class="delete-button" type="submit"><%= __('DELETE') %></button>
                     </form>
                 </td>
             </tr>
@@ -47,71 +47,71 @@
         </tbody>
     </table>
 
-    <h2>Create New User</h2>
+    <h2><%= __('CREATE_NEW_USER') %></h2>
     <form action="/admin/create" method="POST" class="create-form">
-        <label for="username">Username:</label>
+        <label for="username"><%= __('USERNAME') %>:</label>
         <input type="text" id="username" name="username" required><br>
 
-        <label for="password">Password:</label>
+        <label for="password"><%= __('PASSWORD') %>:</label>
         <input type="password" class="password" name="password" required><br>
 
-        <label for="password2">Confirm Password:</label>
+        <label for="password2"><%= __('CONFIRM_PASSWORD') %>:</label>
         <input type="password" class="password" name="password2" required><br>
 
-        <label for="isAdminCreate">Is Admin:</label>
+        <label for="isAdminCreate"><%= __('IS_ADMIN_CREATE') %>:</label>
         <input type="checkbox" id="isAdminCreate" name="isAdmin"><br>
 
-        <button class="create-button" type="submit">Create User</button>
+        <button class="create-button" type="submit"><%= __('CREATE_USER_BUTTON') %></button>
     </form>
 
 
-    <h2>Existing Banners</h2>
+    <h2><%= __('EXISTING_BANNERS') %></h2>
     <% banners.forEach(banner => { %>
         <div>
-            <p>Title: <%= banner.title %></p>
-            <p>Type: <%= banner.type %></p>
-            <p>Items: <%= banner.items.join(', ') %></p>
-            <button class="edit-button" onclick="document.getElementById('editForm<%= banner._id %>').style.display='block'">Edit</button>
+            <p><%= __('TITLE') %>: <%= banner.title %></p>
+            <p><%= __('TYPE') %>: <%= banner.type %></p>
+            <p><%= __('ITEMS') %>: <%= banner.items.join(', ') %></p>
+            <button class="edit-button" onclick="document.getElementById('editForm<%= banner._id %>').style.display='block'"><%= __('EDIT') %></button>
             <div id="editForm<%= banner._id %>" class="editForm" style="display:none;">
                 <form action="/admin/update-banner/<%= banner._id %>" method="POST">
-                    <label for="title">Title:</label>
+                    <label for="title"><%= __('TITLE') %>:</label>
                     <input type="text" id="title" name="title" value="<%= banner.title %>" required><br>
 
-                    <label for="type">Type:</label>
+                    <label for="type"><%= __('TYPE') %>:</label>
                     <select id="type" name="type">
-                        <option value="anime" <% if (banner.type === 'anime') { %> selected <% } %>>Anime</option>
-                        <option value="manga" <% if (banner.type === 'manga') { %> selected <% } %>>Manga</option>
+                        <option value="anime" <% if (banner.type === 'anime') { %> selected <% } %>><%= __('ANIME') %></option>
+                        <option value="manga" <% if (banner.type === 'manga') { %> selected <% } %>><%= __('MANGA') %></option>
                     </select><br>
 
-                    <label for="items">Items (comma separated):</label>
+                    <label for="items"><%= __('ITEMS_COMMA_SEPARATED') %>:</label>
                     <input type="text" id="items" name="items" value="<%= banner.items.join(', ') %>" required><br>
 
-                    <button type="submit">Update Banner</button>
+                    <button type="submit"><%= __('UPDATE_BANNER') %></button>
                 </form>
             </div>
 
             <form action="/admin/delete-banner/<%= banner._id %>" method="POST" style="display:inline;">
-                <button type="submit">Delete</button>
+                <button type="submit"><%= __('DELETE') %></button>
             </form>
         </div>
     <% }); %>
 
 
-    <h2>Create Banner</h2>
+    <h2><%= __('CREATE_BANNER') %></h2>
     <form action="/admin/create-banner" method="post">
-        <label for="title">Banner Title:</label>
+        <label for="title"><%= __('BANNER_TITLE') %>:</label>
         <input type="text" id="title" name="title" required><br>
 
-        <label for="type">Select Type:</label>
+        <label for="type"><%= __('SELECT_TYPE') %>:</label>
         <select id="type" name="type">
-            <option value="anime">Anime</option>
-            <option value="manga">Manga</option>
+            <option value="anime"><%= __('ANIME') %></option>
+            <option value="manga"><%= __('MANGA') %></option>
         </select><br>
 
-        <label for="items">Item IDs (comma separated):</label>
+        <label for="items"><%= __('ITEM_IDS_COMMA_SEPARATED') %>:</label>
         <input type="text" id="items" name="items" required><br>
 
-        <button type="submit">Create Banner</button>
+        <button type="submit"><%= __('CREATE_BANNER_BUTTON') %></button>
     </form>
 </div>
 
